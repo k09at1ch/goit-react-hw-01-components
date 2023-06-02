@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import React from 'react';
 const FriendList = ({ friends }) => {
   return (
@@ -46,5 +46,14 @@ const FriendListItem = ({ friend }) => {
     </li>
   );
 };
-
+FriendList.propTypes = {
+    friends: PropTypes.array,
+  };
+  
+  FriendListItem.propTypes = {
+    avatar: PropTypes.string,
+    name: PropTypes.string,
+    isOnline: PropTypes.bool,
+  };
+  
 export default FriendList;
