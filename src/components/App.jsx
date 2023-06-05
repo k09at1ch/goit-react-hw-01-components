@@ -1,12 +1,14 @@
 import React from 'react';
-import Profile from './Profile';
-import user from '../data/user.json';
-import data from '../data/data.json';
-import Statistics from './Statistics';
-import FriendList from './Friendlist';
-import friends from '../data/friends.json';
-import transactions from '../data/transactions.json';
-import TransactionHistory from './History';
+import Profile from './Profile/Profile';
+import user from './Profile/user';
+import data from './Statistics/data.json';
+import Statistics from './Statistics/Statistics';
+import FriendList from './FriendList/Friendlist';
+import friends from './FriendList/friends';
+import transactions from './History/transactions';
+import TransactionHistory from './History/History';
+
+
 export const App = () => {
   return (
     <div
@@ -20,6 +22,8 @@ export const App = () => {
         flexDirection: 'column',
       }}
     >
+
+
       <Profile
         username={user.username}
         tag={user.tag}
@@ -28,8 +32,11 @@ export const App = () => {
         stats={user.stats}
       />
 
+
       <Statistics title="Upload stats" stats={data} />
       <p>My friends</p>
+
+
       <FriendList friends={friends} />
 
       
