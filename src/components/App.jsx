@@ -1,11 +1,11 @@
 import React from 'react';
 import Profile from './Profile/Profile';
-import user from './Profile/user';
-import data from './Statistics/data.json';
+import user from './data/user';
+import data from './data/data.json';
 import Statistics from './Statistics/Statistics';
 import FriendList from './FriendList/Friendlist';
-import friends from './FriendList/friends';
-import transactions from './History/transactions';
+import friends from './data/friends';
+import transactions from './data/transactions';
 import TransactionHistory from './History/History';
 
 

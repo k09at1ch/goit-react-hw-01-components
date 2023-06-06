@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import styles from './Profile.module.css';
 const Profile = ({ username, tag, location, avatar, stats }) => {
   const { followers, views, likes } = stats;
- 
   return (
-    <div className="profile" style={{display: 'flex', flexDirection: 'column', alignItems:'center', fontSize: 25}}>
+    <div className={styles.profile}>
       <h1>My Profile</h1>
-      <img src={avatar} alt="User avatar" className="avatar" style={{width: 100, height: 100}}/>
-      <ul className="description" style={{listStyle: 'none', display:'flex', flexDirection: 'row', margin:0, columnGap:20, border:'solid', padding:20}}>
+      <img src={avatar} alt="User avatar" className={styles.avatar}/>
+      <ul className={styles.description}>
         <p className="name">{username}</p>
         <p className="tag">@{tag}</p>
         <p className="location">{location}</p>
       </ul>
-      <ul className="stats" style={{listStyle: 'none', display:'flex', flexDirection: 'column'}}>
+      <ul className={styles.stats}>
         <li>
           <span className="label">Followers</span>
           <span className="quantity"> {followers}</span>

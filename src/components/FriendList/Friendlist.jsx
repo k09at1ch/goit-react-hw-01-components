@@ -1,47 +1,58 @@
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import styles from './Friendlist.module.css';
+// const FriendList = ({ friends }) => {
+//   return (
+//     <ul
+//       className="friend-list"
+//       style={{ display: 'flex', flexDirection: 'column' }}
+//     >
+//       {friends.map(friend => {
+//         const { avatar, name, isOnline } = friend;
+//         return (
+//           <li className={styles.item} key={friend.id}>
+//             <span
+//               className={styles.status}
+//               // style={isOnline ? className={styles.status} : statusStyle.red}
+//             ></span>
+//             <img className={styles.avatar} src={avatar} alt="User avatar" width="48" />
+//             <p className="name">{name}</p>
+//           </li>
+//         );
+//       })}
+//     </ul>
+//   );
+// };
+
+// FriendList.propTypes = {
+//   friends: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       avatar: PropTypes.string.isRequired,
+//       name: PropTypes.string.isRequired,
+//       isOnline: PropTypes.bool.isRequired,
+//     })
+//   ),
+// };
+
+// export default FriendList;
+
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Friendlist.module.css';
 
 const FriendList = ({ friends }) => {
-  const statusStyle = {
-    green: {
-      backgroundColor: 'green',
-    },
-    red: {
-      backgroundColor: 'red',
-    },
-  };
   return (
-    <ul
-      className="friend-list"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      {friends.map(friend => {
+    <ul className={styles.friendList}>
+      {friends.map((friend) => {
         const { avatar, name, isOnline } = friend;
+        const statusClass = isOnline ? styles.online : styles.offline;
+
         return (
-          <li className="item" key={friend.id}>
-            <span className="status" style={isOnline ? statusStyle.green : statusStyle.red}></span>
-            <img className="avatar" src={avatar} alt="User avatar" width="48" />
-            <p className="name">{name}</p>
-            <style jsx>{`
-              .item {
-                display: flex;
-                align-items: center;
-                margin-bottom: 1px;
-              }
-              .status {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                margin-right: 10px;
-              }
-              .avatar {
-                border-radius: 20%;
-                margin-right: 10px;
-              }
-            `}</style>
+          <li className={styles.item} key={friend.id}>
+            <span className={`${styles.status} ${statusClass}`}></span>
+            <img className={styles.avatar} src={avatar} alt="User avatar" width="48" />
+            <p className={styles.name}>{name}</p>
           </li>
         );
       })}
@@ -50,7 +61,14 @@ const FriendList = ({ friends }) => {
 };
 
 FriendList.propTypes = {
-  friends: PropTypes.array,
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+    })
+  ),
 };
 
 export default FriendList;
